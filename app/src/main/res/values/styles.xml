@@ -1,0 +1,39 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="SignInTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/signinColorPrimary</item>
+        <item name="colorPrimaryDark">@color/signincolorPrimaryDark</item>
+        <item name="colorAccent">@color/signincolorAccent</item>
+        <item name="android:textColorPrimary">@color/getstartedtextColorPrimary</item>
+    </style>
+
+    <style name="GetStartedTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/getstartedColorPrimary</item>
+        <item name="colorPrimaryDark">@color/getstartedcolorPrimaryDark</item>
+        <item name="colorAccent">@color/getstartedcolorAccent</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textColorPrimary">@color/getstartedtextColorPrimary</item>
+    </style>
+
+    <style name="ChatTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/chatColorPrimary</item>
+        <item name="colorPrimaryDark">@color/chatColorPrimaryDark</item>
+        <item name="colorAccent">@color/chatColorAccent</item>
+        <item name="android:textColor">@color/textColorChat</item>
+    </style>
+
+    <style name="ProfileTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/profileColorPrimary</item>
+        <item name="colorPrimaryDark">@color/profileColorPrimaryDark</item>
+        <item name="colorAccent">@color/profileColorAccent</item>
+    </style>
+
+</resources>

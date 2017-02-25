@@ -1,0 +1,62 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/message_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="5dp"
+    android:paddingTop="5dp">
+
+    <!--FrameLayout
+        android:id="@+id/left_arrow"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="2dp"
+        android:background="@drawable/chat_message_arrow"
+        android:rotation="180"/-->
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginEnd="13dp"
+        android:background="@drawable/chat_message_background"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/emailTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textIsSelectable="true"
+            android:textStyle="bold"
+            android:padding="5dp"
+            android:scrollHorizontally="false"
+            android:ellipsize="none"
+            tools:text="Some User"/>
+        <TextView
+            android:id="@+id/messageTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textIsSelectable="true"
+            android:padding="5dp"
+            android:maxWidth="230dp"
+            android:scrollHorizontally="false"
+            android:ellipsize="none"
+            tools:text="Hey this is a message, look!"/>
+
+    </LinearLayout>
+
+    <!--FrameLayout
+        android:id="@+id/right_arrow"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignEnd="@+id/linearLayout"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="25dp"
+        android:background="@drawable/chat_message_arrow"
+        android:rotation="180"/-->
+
+</RelativeLayout>
