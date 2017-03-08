@@ -197,6 +197,5 @@ public class ChatActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        //empty..just call it to disable back pressing so that users aren't made log out unnecessarly.
-    }
+        //empty..nothing to do.
 }
