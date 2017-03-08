@@ -26,15 +26,18 @@ import com.google.firebase.database.Query;
 
 public class ChatActivity extends AppCompatActivity {
 
+    //constants
     private static final String ANONYMOUS = "anonymous";
     private static final int DEFAULT_MSG_LENGTH_LIMIT = 1000;
+    //firebase declarations
     FirebaseDatabase mFirebaseDatabase;
     DatabaseReference mDatabaseReference;
-    LinearLayoutManager mManager;
     FirebaseRecyclerAdapter<ChatMessages, ChatHolder> mAdapter;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference mChatRef;
+    
+    LinearLayoutManager mManager;
     private String mEmail;
     private Button mSendButton;
     private EditText mMessageEditText;
