@@ -21,7 +21,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         FirebaseCrash.report(new Exception("My first Android non-fatal error"));
-
+        
+         if (!isNetworkAvailable(getApplicationContext())){
+            Toast.makeText(this, "Please check your internet connection.", Toast.LENGTH_SHORT).show();
+        }
 
         signInButton = (Button) findViewById(R.id.sign_in_button);
         getStartedButton = (Button) findViewById(R.id.get_started_button);
@@ -43,4 +46,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public static boolean isNetworkAvailable(Context context){
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        if (connectivityManager != null){
+            NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+            if (networkInfo != null){
+                return networkInfo.isConnected();
+            }
+        }
+        return false;
+    }
 }
