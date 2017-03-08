@@ -71,28 +71,7 @@ public class SignupActivity extends AppCompatActivity {
 
         String mEmail = email.getText().toString();
         String mPassword = password.getText().toString();
-        /*if(TextUtils.isEmpty(mUsername)){
-            username.setError("Required.");
-            valid = false;
-        }else{
-            username.setError(null);
-        }
-
-        if (TextUtils.isEmpty(mEmail)) {
-            email.setError("Required.");
-            valid = false;
-        } else {
-            email.setError(null);
-        }
-
-
-        if (TextUtils.isEmpty(mPassword)) {
-            password.setError("Required.");
-            valid = false;
-        } else {
-            password.setError(null);
-        }*/
-
+  
         if(TextUtils.isEmpty(mEmail) && TextUtils.isEmpty(mPassword)){
             email.setError("Required.");
             password.setError("Required.");
