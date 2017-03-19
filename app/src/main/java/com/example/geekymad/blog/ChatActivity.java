@@ -201,4 +201,5 @@ public class ChatActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         //empty..nothing to do.
+   }
 }
