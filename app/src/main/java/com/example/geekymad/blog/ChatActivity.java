@@ -16,13 +16,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class ChatActivity extends AppCompatActivity {
 
@@ -33,11 +37,11 @@ public class ChatActivity extends AppCompatActivity {
     FirebaseDatabase mFirebaseDatabase;
     DatabaseReference mDatabaseReference;
     FirebaseRecyclerAdapter<ChatMessages, ChatHolder> mAdapter;
+    LinearLayoutManager mManager;
+    ProgressBar progressBar;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference mChatRef;
-    
-    LinearLayoutManager mManager;
     private String mEmail;
     private Button mSendButton;
     private EditText mMessageEditText;
@@ -58,6 +62,7 @@ public class ChatActivity extends AppCompatActivity {
                 if (user != null) {
                     onSignedInInitialize(user.getEmail());
                     attachRecyclerViewAdapter();
+
                 } else {
                     //signed out
                     onSignedOutCleanup();
@@ -71,11 +76,26 @@ public class ChatActivity extends AppCompatActivity {
         mMessageEditText = (EditText) findViewById(R.id.message);
         mSendButton = (Button) findViewById(R.id.send);
 
+        progressBar = (ProgressBar) findViewById(R.id.progressBarChat);
+
+        showProgressBar();
+        mDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                hideProgressBar();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                //empty
+            }
+        });
         // Enable Send button only when there's text to send
         mMessageEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
+
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if (charSequence.toString().trim().length() > 0) {
@@ -86,6 +106,7 @@ public class ChatActivity extends AppCompatActivity {
                     mSendButton.setBackground(getDrawable(R.drawable.send_button_disabled));
                 }
             }
+
             @Override
             public void afterTextChanged(Editable editable) {
             }
@@ -134,8 +155,16 @@ public class ChatActivity extends AppCompatActivity {
             mAuth.removeAuthStateListener(mAuthListener);
     }
 
+    public void showProgressBar() {
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    public void hideProgressBar(){
+        progressBar.setVisibility(View.INVISIBLE);
+    }
+
     private void attachRecyclerViewAdapter() {
-        Query lastFifty = mChatRef.limitToLast(50);
+        Query lastFifty = mChatRef.limitToLast(200);
         mAdapter = new FirebaseRecyclerAdapter<ChatMessages, ChatHolder>(ChatMessages.class, R.layout.item_message, ChatHolder.class, lastFifty) {
             @Override
             protected void populateViewHolder(ChatHolder chatHolder, ChatMessages chatMessages, int i) {
@@ -146,7 +175,6 @@ public class ChatActivity extends AppCompatActivity {
                 } else {
                     chatHolder.isSender(false);
                 }
-
                 chatHolder.setEmail(chatMessages.getEmail());
                 chatHolder.setText(chatMessages.getText());
             }
@@ -166,6 +194,7 @@ public class ChatActivity extends AppCompatActivity {
 
     private void onSignedInInitialize(String email) {
         mEmail = email;
+
     }
 
     @Override
@@ -201,5 +230,5 @@ public class ChatActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         //empty..nothing to do.
-   }
+    }
 }
