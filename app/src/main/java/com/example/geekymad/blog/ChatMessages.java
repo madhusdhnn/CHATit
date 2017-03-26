@@ -1,18 +1,18 @@
 package com.example.geekymad.blog;
 
+public class ChatMessages {
 
- public class ChatMessages {
+    public String text;
+    public String email;
+    public String photoUrl;
 
-    private String text;
-    private String email;
-
-     // Default constructor needed for firebase
+     // Default constructor needed for firebase implements
     public ChatMessages(){}
 
-    public ChatMessages(String text, String email){
+    public ChatMessages(String text, String email, String photoUrl){
         this.text = text;
         this.email = email;
-
+        this.photoUrl = photoUrl;
     }
 
     public String getText(){
@@ -23,6 +23,9 @@ package com.example.geekymad.blog;
         return email;
     }
 
+    public String getPhotoUrl(){
+        return photoUrl;
+    }
 
     public void setText(String text){
         this.text = text;
@@ -32,4 +35,7 @@ package com.example.geekymad.blog;
         this.email = email;
     }
 
+    public void setPhotoUrl(String photoUrl){
+        this.photoUrl = photoUrl;
+    }
 }
