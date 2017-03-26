@@ -46,6 +46,12 @@
             android:scrollHorizontally="false"
             android:ellipsize="none"
             tools:text="Hey this is a message, look!"/>
+        
+         <ImageView
+            android:id="@+id/photoImageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true" />
 
     </LinearLayout>
 
