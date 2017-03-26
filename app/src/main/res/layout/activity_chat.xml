@@ -26,6 +26,14 @@
         android:padding="4dp"
         android:weightSum="1">
 
+        <ImageButton
+            android:id="@+id/photoPickerButton"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:background="@android:drawable/ic_menu_gallery"
+            android:layout_weight="0.08"
+            android:contentDescription="@string/image_button"/>
+
         <EditText
             android:id="@+id/message"
             android:layout_width="0dp"
