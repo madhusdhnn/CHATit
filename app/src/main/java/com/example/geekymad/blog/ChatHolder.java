@@ -43,35 +43,7 @@ import com.google.firebase.database.Query;
             message = new ChatMessages();
         }
 
-   /* public void bind(ChatMessages message){
-        if (message.text.startsWith("https://firebasestorage.googleapis.com/") || message.text.startsWith("content://")){
-            messageTextView.setVisibility(View.INVISIBLE);
-            photoImageView.setVisibility(View.VISIBLE);
-            Glide.with(photoImageView.getContext())
-                    .load(message.getPhotoUrl())
-                    .into(photoImageView);
-        }else {
-            messageTextView.setVisibility(View.VISIBLE);
-            photoImageView.setVisibility(View.GONE);
-            messageTextView.setText(message.getText());
-        }
-        emailTextView.setText(message.getText());
-    }*/
-
- /* public void isPhoto(boolean isPhoto){
-       if (isPhoto){
-           messageTextView.setVisibility(View.INVISIBLE);
-           photoImageView.setVisibility(View.VISIBLE);
-
-       }else {
-           messageTextView.setVisibility(View.VISIBLE);
-           photoImageView.setVisibility(View.GONE);
-           messageTextView.setText(message.getText());
-       }
-       photoImageView.setImageURI(message.getPhotoUrl());
-   }*/
-
-        public void isSender(boolean isSender){
+          public void isSender(boolean isSender){
             final int color;
             if(isSender){
                 color = mGreen300;
@@ -100,24 +72,27 @@ import com.google.firebase.database.Query;
             messageTextView.setText(text);
         }
 
-    public void setPhotoUrl(Uri photoUrl) {
-        if (photoUrl == null){
+     public void setPhotoUrl(String photoUrl) {
+        if (photoUrl == null) {
             return;
         }
-        Glide.with(photoImageView.getContext()).load(photoUrl)
-                .fitCenter()
-                .into(photoImageView);
-        photoImageView.setImageURI(photoUrl);
-    }
+        photoImageView.setImageResource(Integer.parseInt(String.valueOf(photoUrl)));
 
+    }
         public void isPhoto(boolean isPhoto) {
             if(isPhoto){
-                messageTextView.setVisibility(View.INVISIBLE);
+                messageTextView.setVisibility(View.GONE);
                 photoImageView.setVisibility(View.VISIBLE);
+                Glide.with(photoImageView.getContext())
+                        .load(message.getPhotoUrl())
+                        .fitCenter()
+                        .centerCrop()
+                        .into(photoImageView);
+               // photoImageView.setImageURI(message.getPhotoUrl());
             }else {
                 messageTextView.setVisibility(View.VISIBLE);
                 photoImageView.setVisibility(View.GONE);
+                messageTextView.setText(message.getText());
             }
         }
-
     }
