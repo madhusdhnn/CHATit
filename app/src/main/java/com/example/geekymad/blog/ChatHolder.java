@@ -76,19 +76,18 @@ import com.google.firebase.database.Query;
         if (photoUrl == null) {
             return;
         }
-        photoImageView.setImageResource(Integer.parseInt(String.valueOf(photoUrl)));
-
+          Glide.with(photoImageView.getContext())
+                        .load(photoUrl)
+                        .fitCenter()
+                        .centerCrop()
+                        .into(photoImageView);
+       // photoImageView.setImageURI(String.valueOf(photoUrl));
     }
         public void isPhoto(boolean isPhoto) {
             if(isPhoto){
                 messageTextView.setVisibility(View.GONE);
                 photoImageView.setVisibility(View.VISIBLE);
-                Glide.with(photoImageView.getContext())
-                        .load(message.getPhotoUrl())
-                        .fitCenter()
-                        .centerCrop()
-                        .into(photoImageView);
-               // photoImageView.setImageURI(message.getPhotoUrl());
+                    // photoImageView.setImageURI(message.getPhotoUrl());
             }else {
                 messageTextView.setVisibility(View.VISIBLE);
                 photoImageView.setVisibility(View.GONE);
