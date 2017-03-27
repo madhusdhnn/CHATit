@@ -23,7 +23,7 @@ public class ChatMessages {
         return email;
     }
 
-    public String getPhotoUrl(){
+   public String getPhotoUrl(){
         return photoUrl;
     }
 
