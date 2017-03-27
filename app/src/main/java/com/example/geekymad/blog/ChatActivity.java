@@ -247,7 +247,7 @@ public class ChatActivity extends AppCompatActivity {
 
                 chatHolder.setEmail(chatMessages.getEmail());
                 chatHolder.setText(chatMessages.getText());
-                chatHolder.setPhotoUrl(Uri.parse(chatMessages.getPhotoUrl()));
+                chatHolder.setPhotoUrl(chatMessages.getPhotoUrl());
             }
 
         };
