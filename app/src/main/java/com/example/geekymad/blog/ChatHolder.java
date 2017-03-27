@@ -91,7 +91,7 @@ import com.google.firebase.database.Query;
             }else {
                 messageTextView.setVisibility(View.VISIBLE);
                 photoImageView.setVisibility(View.GONE);
-                messageTextView.setText(message.getText());
+               // messageTextView.setText(message.getText());
             }
         }
     }
